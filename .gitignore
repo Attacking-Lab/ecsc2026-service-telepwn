@@ -1,0 +1,37 @@
+target/
+Cargo.lock
+CLAUDE.md
+
+# patched kernel modules — reproducible from the patch_*.py scripts, never push binaries
+*.ko
+
+__pycache__/
+provisioning/dhcp/run/
+
+# generated per-run state
+provisioning/vlans/run/
+provisioning/triage/exports/
+provisioning/triage/*.csv
+
+# scoreboard export — contains one join_token per team, do not commit
+teams.json
+provisioning/content/team_meta.json
+provisioning/content/fleet.csv.placeholder-bak
+stuff/
+
+*.rom
+.token
+
+*.pcm
+lines/
+
+confs/
+
+# published USB-stick firmware (stick/build.py)
+provisioning/stick/dist/
+
+# git worktrees (local, never committed)
+.worktrees/
+
+# internal CI config — references private registry, not useful on GitHub
+.woodpecker/

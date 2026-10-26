@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>phone media upload</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    font-family: system-ui, sans-serif;
+    margin: 0;
+    padding: 2rem 1rem;
+    background: #14161a;
+    color: #e6e8eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  h1 { font-size: 1.4rem; margin: 0; }
+  .card {
+    background: #1e2127;
+    border: 1px solid #2c313a;
+    border-radius: 12px;
+    padding: 1.5rem;
+    width: min(540px, 100%);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .card h2 { margin: 0; font-size: 1.1rem; }
+  .muted { color: #9aa3af; font-size: 0.85rem; margin: 0; }
+  input[type=file] { color: #e6e8eb; }
+  button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  button:disabled { background: #394150; cursor: not-allowed; }
+  select {
+    background: #14161a;
+    color: #e6e8eb;
+    border: 1px solid #2c313a;
+    border-radius: 8px;
+    padding: 0.55rem 0.6rem;
+    font-size: 0.95rem;
+    flex: 1;
+    min-width: 0;
+  }
+  canvas {
+    width: 240px;
+    height: 120px;
+    image-rendering: pixelated;
+    border: 1px solid #2c313a;
+    border-radius: 6px;
+    background: #000;
+  }
+  .status { font-size: 0.85rem; min-height: 1.2em; }
+  .ok { color: #4ade80; }
+  .err { color: #f87171; }
+  .row { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+  <h1>phone media upload</h1>
+
+  <section class="card">
+    <h2>wallpaper</h2>
+    <p class="muted">.png &rarr; scaled &amp; cropped to 480&times;240 RGB565, converted in your browser.</p>
+    <input type="file" id="wp-file" accept=".png,image/png">
+    <canvas id="wp-canvas" width="480" height="240"></canvas>
+    <div class="row">
+      <button id="wp-apply" disabled>upload to phone</button>
+    </div>
+    <div class="row">
+      <select id="wp-select"></select>
+      <button id="wp-download">download as .png</button>
+    </div>
+    <div class="status" id="wp-status"></div>
+  </section>
+
+  <section class="card">
+    <h2>ringtone</h2>
+    <p class="muted">.wav &rarr; 8-bit mono PCM @ 8&nbsp;kHz, converted in your browser.</p>
+    <input type="file" id="rt-file" accept=".wav,audio/wav,audio/x-wav">
+    <div class="row">
+      <button id="rt-preview" disabled>preview</button>
+      <button id="rt-apply" disabled>upload to phone</button>
+    </div>
+    <div class="row">
+      <select id="rt-select"></select>
+      <button id="rt-download">download as .wav</button>
+    </div>
+    <div class="status" id="rt-status"></div>
+  </section>
+
+  <script src="/app.js"></script>
+</body>
+</html>

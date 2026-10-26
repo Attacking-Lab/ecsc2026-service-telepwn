@@ -1,0 +1,24 @@
+name: telepwn
+
+services:
+  telepwn:
+    container_name: telepwn
+    platform: linux/amd64
+    build:
+      context: .
+    volumes:
+      - ./backend/data:/tmp/telepwn_data:rw
+    ports:
+      - ${SERVICE_PORT:-9400}:9400
+    network_mode: host
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "9400"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+      start_period: 2s
+    restart: unless-stopped
+
+volumes:
+  data:
+    name: telepwn-data

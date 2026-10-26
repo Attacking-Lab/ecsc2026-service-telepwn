@@ -1,0 +1,70 @@
+#!/bin/sh
+# telepwn launcher on the USB stick (same for every team). Started by stage2.sh with:
+#   T_FW       read-only firmware dir on the stick (this file's own directory)
+#   T_DATA     read/write dir on the stick
+#   T_RUN      tmpfs working dir of the backend (lines -> $T_FW/lines, data -> stick)
+#   T_SRV      server host:port from fw/server.txt (may be empty)
+#   ECSC_TEAM  team slug the server answered with (empty when it did not answer)
+T_FW="${T_FW:-/tmp/udisk1/telepwn/fw}"
+T_RUN="${T_RUN:-/tmp/telepwn}"
+LCDFB="$T_FW/lcdfb"
+KEYPAD="$T_FW/keypad"
+BACKEND="$T_FW/backend"
+SPLASH="$T_FW/teams/$ECSC_TEAM/splash.png"
+TEAM_FILE="$T_FW/teams/$ECSC_TEAM/team.txt"
+ERROR="$T_FW/error.png"
+CB_PORT=9001
+
+myip() {
+    ifconfig eth0 2>/dev/null | sed -n 's/.*inet addr:\([0-9.]*\).*/\1/p'
+}
+
+TEAM="$ECSC_TEAM"
+[ -n "$ECSC_TEAM" ] && [ -r "$TEAM_FILE" ] && TEAM=$(cat "$TEAM_FILE")
+IP=$(myip)
+CB_HOST="${T_SRV%%:*}"
+
+# Proof-of-life for callback.py, which runs next to fwserve.py and identifies the team
+# by the source subnet of the connection.
+callback() {
+    [ -n "$CB_HOST" ] || return
+    echo "$IP" | busybox nc "$CB_HOST" "$CB_PORT" 2>/dev/null
+}
+
+start_backend() {
+    [ -x "$BACKEND" ] || return
+    (
+        while :; do
+            (cd "$T_RUN" && exec "$BACKEND") >/dev/null 2>&1
+            sleep 2
+        done
+    ) &
+}
+
+heartbeat() {
+    while :; do
+        sleep 60
+        IP=$(myip)
+        callback
+    done
+}
+
+start_backend
+callback
+heartbeat &
+
+_v=$(sed 's/[^0-9]//g;q' "$T_FW/version.txt" 2>/dev/null)
+[ -n "$_v" ] && [ -x "$KEYPAD" ] && [ "$_v" -ge 2 ] && "$KEYPAD" blink STATUS 300 300 >/dev/null 2>&1
+
+# Display: the team flag splash (lcdfb), repainted on a loop. When no team resolved
+# (server down or this subnet maps to no team) show the error splash so the phone is
+# obviously unprovisioned rather than dark.
+while :; do
+    if [ -x "$LCDFB" ] && [ -n "$ECSC_TEAM" ] && [ -r "$SPLASH" ]; then
+        "$LCDFB" splash "$SPLASH" 60 "$TEAM" "IP $IP" >/dev/null 2>&1 || sleep 5
+    elif [ -x "$LCDFB" ] && [ -r "$ERROR" ]; then
+        "$LCDFB" splash "$ERROR" 60 "IP $IP" >/dev/null 2>&1 || sleep 5
+    else
+        sleep 5
+    fi
+done

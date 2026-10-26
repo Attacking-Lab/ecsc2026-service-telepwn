@@ -1,0 +1,41 @@
+#!/bin/sh
+
+set -e
+patch -p1 <<'DIFF'
+--- a/backend/src/app.rs
++++ b/backend/src/app.rs
+@@ -362,7 +362,11 @@ pub fn create_item(ctx: &mut AudioContext) -> Result<(), std::io::Error> {
+     Ok(())
+ }
+ 
+-fn view_offered_trade(ctx: &mut AudioContext, offered_item_id: u64) -> Result<(), std::io::Error> {
++fn view_offered_trade(
++    ctx: &mut AudioContext,
++    offered_item_id: u64,
++    requested_item_id: u64,
++) -> Result<(), std::io::Error> {
+     // View the trade
+     'preview: loop {
+         // Preview it
+@@ -383,12 +387,6 @@ fn view_offered_trade(ctx: &mut AudioContext, offered_item_id: u64) -> Result<()
+     }
+ 
+     // Accept the trade.
+-    // Get offered ID
+-    let Some(requested_item_id) = get_item_requested_trade(offered_item_id)? else {
+-        ctx.send_clip_until_key("offered_trade_doesnt_exist")?;
+-        return Ok(());
+-    };
+-
+     // Resolve in both directions
+     add_accepted_trade(offered_item_id, requested_item_id)?;
+     add_accepted_trade(requested_item_id, offered_item_id)?;
+@@ -432,7 +430,7 @@ fn view_offered_trades(ctx: &mut AudioContext) -> Result<(), std::io::Error> {
+         }
+ 
+         // Preview the trade offer
+-        view_offered_trade(ctx, offered_item_id)?;
++        view_offered_trade(ctx, offered_item_id, requested_item_id)?;
+     }
+ }
+DIFF

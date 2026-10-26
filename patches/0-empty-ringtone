@@ -1,0 +1,23 @@
+#!/bin/sh
+# Official fix for exploit 0 (flagstore 1, "Empty Sound").
+#
+# recv_buffer_until_key has a flaw where a queued key press leaves
+# buffer_used intact with whatever was in there before.
+# Previewing a sound loads it into the buffer. By navigating to the create
+# ringtone menu without letting any other sound play, we can create a ringtone
+# with the data left in the preview buffer. We can then trade that ringtone
+# to ourselves and view it.
+set -e
+
+patch -p1 <<'DIFF'
+--- a/backend/src/audio.rs
++++ b/backend/src/audio.rs
+@@ -150,6 +150,8 @@ impl AudioContext {
+         let out_block = [0 as Sample; BLOCK_NUM_SAMPLES];
+ 
+         let mut p = 0;
++        self.buffer_used = 0;
++
+         loop {
+             trace!(p);
+DIFF

@@ -1,0 +1,27 @@
+name: telepwn
+
+services:
+  backend:
+    container_name: telepwn-backend
+    build:
+      context: ../service
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    # Host networking: the backend reaches the frontend over the kmob0 interface
+    # (10.60.X.4), and the entrypoint derives TEAM_ID / TELEPWN_IP from kmob0's
+    # address. This also serves BACKEND_PORT (9400) directly on the host, so no
+    # ports: mapping (and none is allowed alongside network_mode: host).
+    network_mode: host
+    volumes:
+      - telepwn-data:/tmp/telepwn_data:rw
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "9400"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+      start_period: 2s
+    restart: unless-stopped
+
+volumes:
+  telepwn-data:
+    name: telepwn-data

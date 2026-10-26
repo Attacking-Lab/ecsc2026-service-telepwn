@@ -1,0 +1,42 @@
+name: telepwn-checker
+
+services:
+  telepwn-checker:
+    container_name: telepwn-checker
+    build:
+      context: .
+    ports:
+      - "${CHECKER_PORT:-8000}:8000/tcp"
+    environment:
+      - SERVICE_PORT=${SERVICE_PORT:-9400}
+      - MONGO_ENABLED=1
+      - MONGO_HOST=telepwn-mongo
+      - MONGO_PORT=1730
+      - MONGO_USER=telepwn_checker
+      - MONGO_PASSWORD=telepwn_checker
+      - OTEL_EXPORTER_OTLP_ENDPOINT=${OTEL_EXPORTER_OTLP_ENDPOINT:-}
+      - ENOCHECKER_HAPROXY_MODE=${ENOCHECKER_HAPROXY_MODE:-0}
+    depends_on:
+      - telepwn-mongo
+    restart: unless-stopped
+
+  telepwn-mongo:
+    container_name: telepwn-mongo
+    image: mongo
+    command: mongod --port 1730
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - 1730:1730
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: telepwn_checker
+      MONGO_INITDB_ROOT_PASSWORD: telepwn_checker
+    restart: unless-stopped
+
+networks:
+  default:
+    name: telepwn-checker
+    driver: bridge
+
+volumes:
+  mongodb-data:

@@ -1,0 +1,355 @@
+[
+    {
+        "name": "welcome",
+        "text": "Welcome to the Telepwn phone system!"
+    },
+    {
+        "name": "browse_items_or_create_item_or_view_offered_trades_or_view_accepted_trades_or_request_support",
+        "text": "Press 1 to browse items. Press 2 to create items. Press 3 to view offered trades. Press 4 to view accepted trades. Press 5 to be connected to a customer support representative. Press * to cancel."
+    },
+    {
+        "name": "goodbye",
+        "text": "Goodbye."
+    },
+    {
+        "name": "test",
+        "text": "How much wood could a woodchuck chuck if a woodchuck could chuck wood?"
+    },
+    {
+        "name": "invalid_input",
+        "text": "Invalid input."
+    },
+    {
+        "name": "enter_offered_item_id_or_cancel",
+        "text": "Enter offered item ID and confirm with #. Press * to cancel."
+    },
+    {
+        "name": "enter_requested_item_id_or_cancel",
+        "text": "Enter requested item ID and confirm with #. Press * to cancel."
+    },
+    {
+        "name": "enter_item_id_or_cancel",
+        "text": "Enter item ID and confirm with #. Press * to cancel."
+    },
+    {
+        "name": "enter_item_pin_or_cancel",
+        "text": "Enter item Pin and confirm with #. Press * to cancel."
+    },
+    {
+        "name": "incorrect_pin",
+        "text": "Incorrect Pin."
+    },
+    {
+        "name": "item_doesnt_exist",
+        "text": "That item does not exist."
+    },
+    {
+        "name": "item_is_not_tradeable",
+        "text": "That item is not tradeable."
+    },
+    {
+        "name": "record_ringtone",
+        "text": "Record your ringtone of 3 to 15 seconds."
+    },
+    {
+        "name": "start_stop_recording",
+        "text": "Press # to start and stop recording."
+    },
+    {
+        "name": "ringtone_too_short",
+        "text": "The ringtone you have provided is too short."
+    },
+    {
+        "name": "send_wallpaper_or_cancel",
+        "text": "Send your wallpaper via the fax function. Press * to cancel."
+    },
+    {
+        "name": "this_is_a_wallpaper",
+        "text": "This is a wallpaper."
+    },
+    {
+        "name": "repeat_preview_or_accept_trade_or_cancel",
+        "text": "Press 1 to repeat preview. Press 2 to accept trade. Press * to cancel."
+    },
+    {
+        "name": "offered_trade_doesnt_exist",
+        "text": "There is no offer to trade for that item.",
+    },
+    {
+        "name": "repeat_playback_or_cancel",
+        "text": "Press 1 to repeat playback. Press * to cancel."
+    },
+    {
+        "name": "accepted_trade_doesnt_exist",
+        "text": "No offer to trade for that item has been accepted.",
+    },
+    {
+        "name": "repeat_preview_or_unlock_full_or_offer_trade_or_cancel",
+        "text": "Press 1 to repeat preview. Press 2 to unlock the full item. Press 3 to offer a trade. Press 4 to request a customer support representative to look at this item. Press * to cancel."
+    },
+    {
+        "name": "select_trade_item",
+        "text": "Select an item to offer in trade."
+    },
+    {
+        "name": "ringtone_or_wallpaper_or_cancel",
+        "text": "Press 1 to create a ringtone. Press 2 to create a wallpaper. Press * to cancel."
+    },
+    {
+        "name": "thanks",
+        "text": "Thank You."
+    },
+    {
+        "name": "trade_offered",
+        "text": "The trade has been offered."
+    },
+    {
+        "name": "trade_accepted",
+        "text": "The trade has been accepted."
+    },
+    {
+        "name": "item_already_exists",
+        "text": "That item already exists."
+    },
+    {
+        "name": "trade_offer_doesnt_exist",
+        "text": "The trade offer no longer exists."
+    },
+    {
+        "name": "please_hold",
+        "text": "Please hold."
+    },
+    {
+        "name": "report_succeeded",
+        "text": "The item has been reported."
+    },
+    {
+        "name": "report_failed",
+        "text": "We failed to report this item."
+    },
+    {
+        "name": "big",
+        "text": "big",
+        "slot": 800
+    },
+    {
+        "name": "small",
+        "text": "small",
+        "slot": 800
+    },
+    {
+        "name": "alfa",
+        "text": "alfa",
+        "slot": 1600
+    },
+    {
+        "name": "bravo",
+        "text": "bravo",
+        "slot": 1600
+    },
+    {
+        "name": "charlie",
+        "text": "charlie",
+        "slot": 1600
+    },
+    {
+        "name": "delta",
+        "text": "delta",
+        "slot": 1600
+    },
+    {
+        "name": "echo",
+        "text": "echo",
+        "slot": 1600
+    },
+    {
+        "name": "foxtrot",
+        "text": "foxtrot",
+        "slot": 1600
+    },
+    {
+        "name": "golf",
+        "text": "golf",
+        "slot": 1600
+    },
+    {
+        "name": "hotel",
+        "text": "hotel",
+        "slot": 1600
+    },
+    {
+        "name": "india",
+        "text": "india",
+        "slot": 1600
+    },
+    {
+        "name": "juliet",
+        "text": "juliet",
+        "slot": 1600
+    },
+    {
+        "name": "kilo",
+        "text": "kilo",
+        "slot": 1600
+    },
+    {
+        "name": "lima",
+        "text": "lima",
+        "slot": 1600
+    },
+    {
+        "name": "mike",
+        "text": "mike",
+        "slot": 1600
+    },
+    {
+        "name": "november",
+        "text": "november",
+        "slot": 1600
+    },
+    {
+        "name": "oscar",
+        "text": "oscar",
+        "slot": 1600
+    },
+    {
+        "name": "papa",
+        "text": "papa",
+        "slot": 1600
+    },
+    {
+        "name": "quebec",
+        "text": "quebec",
+        "slot": 1600
+    },
+    {
+        "name": "romeo",
+        "text": "romeo",
+        "slot": 1600
+    },
+    {
+        "name": "sierra",
+        "text": "sierra",
+        "slot": 1600
+    },
+    {
+        "name": "tango",
+        "text": "tango",
+        "slot": 1600
+    },
+    {
+        "name": "uniform",
+        "text": "uniform",
+        "slot": 1600
+    },
+    {
+        "name": "victor",
+        "text": "victor",
+        "slot": 1600
+    },
+    {
+        "name": "whiskey",
+        "text": "whiskey",
+        "slot": 1600
+    },
+    {
+        "name": "x-ray",
+        "text": "x-ray",
+        "slot": 1600
+    },
+    {
+        "name": "yankee",
+        "text": "yankee",
+        "slot": 1600
+    },
+    {
+        "name": "zulu",
+        "text": "zulu",
+        "slot": 1600
+    },
+    {
+        "name": "0",
+        "text": "0",
+        "slot": 2400
+    },
+    {
+        "name": "1",
+        "text": "1",
+        "slot": 2400
+    },
+    {
+        "name": "2",
+        "text": "2",
+        "slot": 2400
+    },
+    {
+        "name": "3",
+        "text": "3",
+        "slot": 2400
+    },
+    {
+        "name": "4",
+        "text": "4",
+        "slot": 2400
+    },
+    {
+        "name": "5",
+        "text": "5",
+        "slot": 2400
+    },
+    {
+        "name": "6",
+        "text": "6",
+        "slot": 2400
+    },
+    {
+        "name": "7",
+        "text": "7",
+        "slot": 2400
+    },
+    {
+        "name": "8",
+        "text": "8",
+        "slot": 2400
+    },
+    {
+        "name": "9",
+        "text": "9",
+        "slot": 2400
+    },
+    {
+        "name": "plus",
+        "text": "plus",
+        "slot": 2400
+    },
+    {
+        "name": "slash",
+        "text": "slash",
+        "slot": 2400
+    },
+    {
+        "name": "minus",
+        "text": "minus",
+        "slot": 2400
+    },
+    {
+        "name": "under",
+        "text": "under",
+        "slot": 2400
+    },
+    {
+        "name": "equal",
+        "text": "equal",
+        "slot": 2400
+    },
+    {
+        "name": "open_brace",
+        "text": "open brace",
+        "slot": 2400
+    },
+    {
+        "name": "close_brace",
+        "text": "close brace",
+        "slot": 2400
+    }
+]
